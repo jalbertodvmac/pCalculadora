@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
 
 
 def pCalculadora(salir):
 
     while not salir:
+        os.system('clear')
+
         print ("Seleccione una operacion:")
         print ("+ para sumar")
         print ("- para restar")
@@ -12,31 +15,38 @@ def pCalculadora(salir):
 
         operacion = raw_input("Su operacion es: ")
 
-        print ("Introduzca los operadores:")
+        if operacion == "+" or operacion == "-" or operacion == "*" \
+        or operacion == "/":
 
-        operador1 = float(raw_input("Primer operador: "))
-        operador2 = float(raw_input("Segundo operador: "))
+            print ("Introduzca los operadores:")
 
-        if operacion == "+":
-            resultado = operador1 + operador2
+            operador1 = float(raw_input("Primer operador: "))
+            operador2 = float(raw_input("Segundo operador: "))
 
-        elif operacion == "-":
-            resultado = operador1 - operador2
+            if operacion == "+":
+                resultado = operador1 + operador2
 
-        elif operacion == "*":
-            resultado = operador1 * operador2
+            elif operacion == "-":
+                resultado = operador1 - operador2
 
-        elif operacion == "/":
-            resultado = operador1 / operador2
+            elif operacion == "*":
+                resultado = operador1 * operador2
+
+            elif operacion == "/":
+                resultado = operador1 / operador2
+
+            print ("El resultado es:")
+            print (resultado)
 
         else:
             print ("Opcion incorrecta")
-            pCalculadora(False)
 
-        print ("El resultado es:")
-        print (resultado)
+        respuesta = raw_input("Desea salir de la aplicacion? s n: ")
 
-        if (raw_input("Desea salir de la aplicacion? s n: ") == "s"):
+        while respuesta != "s" and respuesta != "n":
+            respuesta = raw_input("Desea salir de la aplicacion? s n: ")
+
+        if respuesta == "s":
             salir = True
 
 pCalculadora(False)
